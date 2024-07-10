@@ -1,13 +1,13 @@
 import { useState } from "react";
 import styles from "./form.module.css";
 export default function Form({ todos, setTodos }) {
-  const [todo, setTodo] = useState("");
+  // const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState({ name: "", done: false });
 
   function handleSubmit(e) {
     e.preventDefault();
     setTodos([...todos, todo]);
-    console.log(todos);
-    setTodo("");
+    setTodo({ name: "", done: false });
   }
   function addTodo(e) {
     console.log(todo);
@@ -19,8 +19,8 @@ export default function Form({ todos, setTodos }) {
           className={styles.modernInput}
           placeholder="Enter Todo intem..."
           type="text"
-          value={todo}
-          onChange={(e) => setTodo(e.target.value)}
+          value={todo.name}
+          onChange={(e) => setTodo({ name: e.target.value, done: false })}
         />
         <button className={styles.modernButton} type="submit" onClick={addTodo}>
           Add
